@@ -1,0 +1,61 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{fancyhdr}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{listings}
+\ifCLASSOPTIONcompsoc
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+\usepackage[caption=false,font=footnotesize]{subfig}
+\fi
+\usepackage{xcolor}
+\usepackage{flushend} % Equalize columns on last page.
+\usepackage{tikz}
+\usepackage{cleveref}
+\usepackage{pgfplots}
+\usepackage{makecell}
+\usepackage{multirow}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\newsavebox{\concatbox}
+\newsavebox{\safetycondbox}
+\newsavebox{\ifbox}
+\newsavebox{\loopbox}
+\newsavebox{\chainbox}
+\newsavebox{\mapnestbox}
+\newsavebox{\idxanblockbox}
+\newsavebox{\idxanmapbox}
+\newsavebox{\idxanloopbox}
+
+\hyphenation{imple-men-ted}
+
+\input{futhark}
+\input{language}
+
+\newcommand\ToDo[1]{\textcolor{red}{#1}}
+\newcommand\lmad{\textsc{lmad}}
+\newcommand\lmads{\textsc{lmad}s}
+
+\definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+\definecolor{darkred}{rgb}{0.5, 0.0, 0.0}
+
+\begin{document}
+
+\input{table1}
+
+\input{table2}
+
+\input{table3}
+
+\input{table4}
+
+\input{table5}
+
+\input{table6}
+
+\end{document}
