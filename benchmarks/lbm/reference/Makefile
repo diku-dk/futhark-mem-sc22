@@ -1,19 +1,17 @@
+CFLAGS?=-O3
+LDFLAGS?=-lOpenCL -lm
+
 RUNS ?= 100
 
-EXTERNALS_DIR = ../../../externals
-PARBOIL_DIR = $(EXTERNALS_DIR)/parboil
-
-results.json:
-	cd $(PARBOIL_DIR)
-
-	for i in $(shell seq 0 $(RUNS)); do (cd $(PARBOIL_DIR); ./parboil run lbm opencl_nvidia short); done \
+results.json: lbm
+	for i in $(shell seq 0 $(RUNS)); do ./lbm 100 -o out -i 120_120_150_ldc.of; done \
 	  | grep "Kernel  " \
 	  | tail -n +2 \
 	  | cut -d: -f2 \
 	  | jq -nR '{"data/short.data": { "runtimes": [inputs | select(length>0) | tonumber | . * 1000000]}}' \
 	  > $@
 
-	for i in $(shell seq 0 $(RUNS)); do (cd $(PARBOIL_DIR); ./parboil run lbm opencl_nvidia long); done \
+	for i in $(shell seq 0 $(RUNS)); do ./lbm 3000 -o out -i 120_120_150_ldc.of; done \
 	  | grep "Kernel  " \
 	  | tail -n +2 \
 	  | cut -d: -f2 \
@@ -21,5 +19,8 @@ results.json:
 	  | jq -s '.[0] + .[1]' - $@ \
 	  | sponge $@
 
+lbm: main.c lbm.c ocl.c parboil_opencl.c
+	gcc -o $@ $^ $(CFLAGS) $(LDFLAGS)
+
 clean:
-	rm -f results.json
+	rm -f results.json lbm out
