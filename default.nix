@@ -2,20 +2,19 @@
 let
   futhark0 = import ./futhark/default.nix {};
   futhark = futhark0.overrideAttrs (old: {
-                installPhase = ''
+    installPhase = ''
                   mkdir -p $out
                   tar xf futhark-nightly.tar.xz
                   cp futhark-nightly/bin/futhark $out
                 '';
-            });
+  });
   nixFromDockerHub = pkgs.dockerTools.pullImage {
-  imageName = "nvidia/cuda";
-  imageDigest = "sha256:833fe2344bbe88181e79758fbcc744721f79ff2f6f7669a92020200bbd7445f2";
-  sha256 = "0mv3nhfjjv49h9yd30fn3x14087dwpdc4n4aci29ak8difqf41jf";
-  finalImageName = "nvidia/cuda";
-  finalImageTag = "11.6.1-devel-ubuntu18.04";
-}
-;
+    imageName = "nvidia/cuda";
+    imageDigest = "sha256:833fe2344bbe88181e79758fbcc744721f79ff2f6f7669a92020200bbd7445f2";
+    sha256 = "0mv3nhfjjv49h9yd30fn3x14087dwpdc4n4aci29ak8difqf41jf";
+    finalImageName = "nvidia/cuda";
+    finalImageTag = "11.6.1-devel-ubuntu18.04";
+  };
   benchmarks = pkgs.copyPathToStore ./benchmarks;
 in
 pkgs.dockerTools.buildLayeredImage {
