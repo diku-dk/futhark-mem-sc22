@@ -6,5 +6,7 @@ pkgs.stdenvNoCC.mkDerivation {
   nativeBuildInputs = [
      pkgs.python2
      pkgs.python3
+     pkgs.moreutils
+     pkgs.jq
   ];
 }
