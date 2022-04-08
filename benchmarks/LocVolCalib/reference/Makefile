@@ -1,8 +1,6 @@
 RUNS ?= 10
 
-EXTERNALS_DIR = ../../../externals
-FINPAR_DIR = $(EXTERNALS_DIR)/finpar
-BENCH_DIR = $(FINPAR_DIR)/LocVolCalib/OutParOpenCLMP
+BENCH_DIR = OutParOpenCLMP
 
 results.json:
 	make -C $(BENCH_DIR) gpu

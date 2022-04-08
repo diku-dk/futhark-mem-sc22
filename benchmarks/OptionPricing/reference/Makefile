@@ -1,8 +1,6 @@
 RUNS ?= 1000
 
-EXTERNALS_DIR = ../../../externals
-FINPAR_DIR = $(EXTERNALS_DIR)/finpar
-BENCH_DIR = $(FINPAR_DIR)/OptionPricing/CppOpenCL
+BENCH_DIR = CppOpenCL
 
 results.json:
 	make -C $(BENCH_DIR) gpu
