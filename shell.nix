@@ -4,6 +4,7 @@
 pkgs.stdenvNoCC.mkDerivation {
   name = "futhark-mem-sc22";
   nativeBuildInputs = [
+     pkgs.python2
      pkgs.python3
   ];
 }
