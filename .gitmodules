@@ -1,0 +1,3 @@
+[submodule "futhark"]
+	path = futhark
+	url = https://github.com/diku-dk/futhark.git
