@@ -42,7 +42,7 @@ if __name__ == '__main__':
           .format(name = name,
                   num = len(list(plain_json.values())[0]["runtimes"])))
     print(" Dataset  | Reference | Unopt. Futhark | Opt. Futhark | Opt. Impact")
-    print("----------+-----------+----------------+--------------+------------")
+    print("----------+-----------+----------------+--------------+-------------")
 
     for dataset, results in plain_json.items():
         pretty_name = canonical_name(dataset)
