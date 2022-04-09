@@ -4,32 +4,32 @@ all: table1 table2 table3 table4 table5 table6
 table1:
 	make -C nw/futhark all
 	make -C nw/reference results.json
-	result-table.py nw
+	./result-table.py nw
 
 table2:
 	make -C lud/futhark all
 	make -C lud/reference results.json
-	result-table.py lud
+	./result-table.py lud
 
 table3:
 	make -C hotspot/futhark all
 	make -C hotspot/reference results.json
-	result-table.py hotspot
+	./result-table.py hotspot
 
 table4:
 	make -C lbm/futhark all
 	make -C lbm/reference results.json
-	result-table.py lbm
+	./result-table.py lbm
 
 table5:
 	make -C OptionPricing/futhark all
 	make -C OptionPricing/reference results.json
-	result-table.py OptionPricing
+	./result-table.py OptionPricing
 
 table6:
 	make -C LocVolCalib/futhark all
 	make -C LocVolCalib/reference results.json
-	result-table.py LocVolCalib
+	./result-table.py LocVolCalib
 
 bin/futhark:
 	cd futhark && nix-build --argstr suffix short-circuiting
