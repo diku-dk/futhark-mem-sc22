@@ -16,6 +16,7 @@ let
     finalImageTag = "11.6.1-devel-ubuntu18.04";
   };
   benchmarks = pkgs.copyPathToStore ./benchmarks;
+  nvidia-icd = pkgs.copyPathToStore ./nvidia-icd;
 in
 pkgs.dockerTools.buildLayeredImage {
   name = "futhark-mem-sc22";
@@ -24,6 +25,7 @@ pkgs.dockerTools.buildLayeredImage {
 
   contents = [futhark
               benchmarks
+              nvidia-icd
               pkgs.python2
               pkgs.python3
               pkgs.moreutils
