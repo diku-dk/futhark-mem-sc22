@@ -16,6 +16,9 @@ let
     finalImageTag = "5.1";
   } ;
   benchmarks = pkgs.copyPathToStore ./benchmarks;
+  python-packages = python-packages: with python-packages; [
+    numpy
+  ];
 in
 pkgs.dockerTools.buildLayeredImage {
   name = "futhark-mem-sc22";
@@ -25,7 +28,7 @@ pkgs.dockerTools.buildLayeredImage {
   contents = [futhark
               benchmarks
               pkgs.python2
-              pkgs.python3
+              (pkgs.python3.withPackages python-packages)
               pkgs.moreutils
               pkgs.jq
              ];
