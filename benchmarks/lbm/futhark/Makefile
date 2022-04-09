@@ -23,4 +23,4 @@ optimized.json: $(BENCHMARK) $(EXTRA_DEPS)
 	  | sponge $@
 
 clean:
-	rm -f $(OUTPUTS)
+	rm -f $(OUTPUTS) lbm lbm.c

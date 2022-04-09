@@ -22,4 +22,4 @@ optimized.json: $(BENCHMARK) $(EXTRA_DEPS)
 	jq '."hotspot.fut".datasets | map_values(del(.stderr)) | map_values(.bytes |= .device)' $@ \
 	  | sponge $@
 clean:
-	rm -f $(OUTPUTS)
+	rm -f $(OUTPUTS) hotspot hotspot.c
