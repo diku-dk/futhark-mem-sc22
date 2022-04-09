@@ -33,7 +33,8 @@ pkgs.dockerTools.buildLayeredImage {
              ];
 
   config = {
-    Env = ["C_INCLUDE_PATH=/usr/local/cuda/include"
+    Env = ["CPATH=/usr/local/cuda/include"
+           "C_INCLUDE_PATH=/usr/local/cuda/include"
            "LIBRARY_PATH=/usr/local/cuda/lib64"
            "LD_LIBRARY_PATH=/usr/local/cuda/lib64"
            "CPLUS_INCLUDE_PATH=/usr/local/cuda/include"

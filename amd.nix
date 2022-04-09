@@ -31,7 +31,8 @@ pkgs.dockerTools.buildLayeredImage {
              ];
 
   config = {
-    Env = ["C_INCLUDE_PATH=/opt/rocm/include:/opt/rocm/opencl/include"
+    Env = ["CPATH=/opt/rocm/include:/opt/rocm/opencl/include"
+           "C_INCLUDE_PATH=/opt/rocm/include:/opt/rocm/opencl/include"
            "LIBRARY_PATH=/opt/rocm/lib:/opt/rocm/opencl/lib"
            "LD_LIBRARY_PATH=/opt/rocm/lib:/opt/rocm/opencl/lib"
            "CPLUS_INCLUDE_PATH=/opt/rocm/include:/opt/rocm/opencl/lib"
