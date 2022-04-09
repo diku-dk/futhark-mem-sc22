@@ -1,6 +1,21 @@
 # sc22-futhark-memory-artifact
 
-## Manifest
+## Instructions for running CUDA container
+
+```
+nix-build cuda.nix -o cuda.tar.gz
+docker load < cuda.tar.gz
+docker run --rm --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ localhost/futhark-mem-sc22:cuda
+```
+
+
+## Instructions for running ROCM container
+
+```
+nix-build rocm.nix -o rocm.tar.gz
+docker load < rocm.tar.gz
+docker run -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video localhost/futhark-mem-sc22:rocm
+```
 
 ## Manifest
 
