@@ -38,10 +38,12 @@ if __name__ == '__main__':
 
     name = list(filter(lambda x: x, bench.split("/")))[-1]
 
-    print("\n {name} Performace ({num} runs)"
+    print()
+    print(" {name} Performace ({num} runs)"
           .format(name = name,
                   num = len(list(plain_json.values())[0]["runtimes"])))
-    print("={equals}=========================\n".format(equals = '=' * len(name)))
+    print("={name}============={num}=======\n".format(name = '=' * len(name),
+                                                      num = '=' * len(str(len(list(plain_json.values())[0]["runtimes"])))))
     print(" Dataset  | Reference | Unopt. Futhark | Opt. Futhark | Opt. Impact")
     print("----------+-----------+----------------+--------------+-------------")
 
