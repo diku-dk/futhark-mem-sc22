@@ -1,13 +1,8 @@
 -- LocVolCalib
 -- ==
 -- compiled input @ data/small.in
--- output @ data/small.out
---
 -- compiled input @ data/medium.in
--- output @ data/medium.out
---
 -- compiled input @ data/large.in
--- output @ data/large.out
 
 def initGrid (s0: f32) (alpha: f32) (nu: f32) (t: f32) (numX: i64) (numY: i64) (numT: i64)
   : (i32, i32, [numX]f32, [numY]f32, [numT]f32) =
