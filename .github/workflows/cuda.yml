@@ -36,8 +36,8 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Push docker image to DockerHub
+    - name: Push docker image to Github Container Registry
       run: |
         docker load < cuda.tar.gz
-        docker push munksgaard/futhark-mem-sc22:cuda
+        docker push ghcr.io/diku-dk/futhark-mem-sc22:cuda
 
