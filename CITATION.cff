@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: futhark-mem-sc22
+message: 'If you use this software, please cite it as below.'
+type: software
+authors:
+  - given-names: Philip
+    family-names: Munksgaard
+    email: philip@munksgaard.me
+    affiliation: University of Copenhagen
+    orcid: 'https://orcid.org/0000-0001-9499-199X'
+  - given-names: Troels
+    family-names: Henriksen
+    email: athas@sigkill.dk
+    affiliation: University of Copenhagen
+    orcid: 'https://orcid.org/0000-0002-1195-9722'
+  - given-names: Ponnuswamy
+    family-names: Sadayappan
+    email: saday@cs.utah.edu
+    affiliation: University of Utah
+    orcid: 'https://orcid.org/0000-0002-4737-2034'
+  - given-names: Cosmin
+    family-names: Oancea
+    email: cosmin.oancea@diku.dk
+    affiliation: University of Copenhagen
+    orcid: 'https://orcid.org/0000-0001-5421-6876'
