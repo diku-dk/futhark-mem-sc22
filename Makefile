@@ -14,7 +14,7 @@ help:
 
 .PHONY: tables
 tables:
-	make -C benchmarks
+	make -C benchmarks tables
 
 bin/futhark:
 	cd futhark && nix-build --argstr suffix short-circuiting

@@ -40,7 +40,7 @@ pkgs.dockerTools.buildLayeredImage {
            "LD_LIBRARY_PATH=/opt/rocm/lib:/opt/rocm/opencl/lib"
            "CPLUS_INCLUDE_PATH=/opt/rocm/include:/opt/rocm/opencl/lib"
           ];
-    Cmd = [ "${pkgs.gnumake}/bin/make" "FUTHARK=/futhark"];
+    Cmd = [ "${pkgs.gnumake}/bin/make" "FUTHARK=/futhark" "tables"];
     WorkingDir = "${benchmarks}";
   };
 }
