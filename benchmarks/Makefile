@@ -14,6 +14,8 @@ help:
 	@echo '  `make table5` - Compile and run OptionPricing benchmarks'
 	@echo '  `make table6` - Compile and run LocVolCalib benchmarks'
 	@echo
+	@echo '  `make clean`  - Cleanup all cached results'
+	@echo
 	@echo 'For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.'
 	@echo 'Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.'
 	@echo
