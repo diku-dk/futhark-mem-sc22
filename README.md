@@ -141,3 +141,32 @@ This section describes every top-level directory and its purpose.
   container. In particular, the `nvidia/cuda` Docker image supplied by NVIDIA
   does not by default support OpenCL execution, so we have to patch in some
   configuration-files.
+
+## Makefile targets in root directory
+
+```
+  `make tables`      - Compile and run all benchmarks to reproduce tables from paper
+                       For more info, use `make help` inside the `benchmarks` directory.
+  `make bin/futhark` - Rebuild the futhark binary.
+  `make cuda.tar.gz` - Build the docker container for CUDA (A100) execution.
+  `make rocm.tar.gz` - Build the docker container for ROCM (MI100) execution.
+
+```
+
+## Makefile targets in benchmarks directory
+
+```
+  `make all`    - Compile and run all benchmarks to reproduce tables from the paper.
+  `make table1` - Compile and run NW benchmarks
+  `make table2` - Compile and run LUD benchmarks
+  `make table3` - Compile and run Hotspot benchmarks
+  `make table4` - Compile and run LBM benchmarks
+  `make table5` - Compile and run OptionPricing benchmarks
+  `make table6` - Compile and run LocVolCalib benchmarks
+
+For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.
+Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.
+
+Inside the CUDA and ROCM containers, you have to specify e.g. `make FUTHARK=/futhark table1`.
+```
+
