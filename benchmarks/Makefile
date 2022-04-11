@@ -1,5 +1,23 @@
-.PHONY: all table1 table2 table3 table4 table5 table6
+.PHONY: help all table1 table2 table3 table4 table5 table6
 all: table1 table2 table3 table4 table5 table6
+
+help:
+	@echo "futhark-mem-sc22 benchmarks"
+	@echo "---------------------------"
+	@echo
+	@echo 'Targets:'
+	@echo '  `make all`    - Compile and run all benchmarks to reproduce tables from the paper'.
+	@echo '  `make table1` - Compile and run NW benchmarks'
+	@echo '  `make table2` - Compile and run LUD benchmarks'
+	@echo '  `make table3` - Compile and run Hotspot benchmarks'
+	@echo '  `make table4` - Compile and run LBM benchmarks'
+	@echo '  `make table5` - Compile and run OptionPricing benchmarks'
+	@echo '  `make table6` - Compile and run LocVolCalib benchmarks'
+	@echo
+	@echo 'For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.'
+	@echo 'Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.'
+	@echo
+	@echo 'Inside the CUDA and ROCM containers, you have to specify e.g. `make FUTHARK=/futhark table1`.'
 
 table1:
 	make -C nw/futhark all
