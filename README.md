@@ -1,34 +1,125 @@
 # futhark-mem-sc22
 
-## Instructions for running CUDA container
+Welcome to `futhark-mem-sc22`. The purpose of this repository is to help
+reproduce the results of the "Memory Optimizations in an Array Language" paper
+submitted to SC22.
+
+## Initial setup
+
+Immediately after cloning this repository, you should initialize and update the
+submodules:
 
 ```
-nix-build cuda.nix -o cuda.tar.gz
+git clone https://github.com/diku-dk/futhark-mem-sc22
+cd futhark-mem-sc22
+git submodule init
+git submodule update
+```
+
+## Instructions for running experiments
+
+We support two different methods of running the experiments from the paper:
+Directly on your host-machine or inside one of the provided containers.
+
+### Running benchmarks on your host-machine
+
+If you have installed and configured an OpenCL capable GPU (we use NVIDIAs A100
+and AMDs MI100 in our article), you should be able to run the experiments using:
+
+```
+make all
+```
+
+This will compile and run both reference- and Futhark-implementations of all
+benchmarks using the Futhark binary in `bin` and show the resulting performance
+tables in ASCII. To use another version of Futhark, use `make FUTHARK=my-futhark
+all`.
+
+The tables are interleaved with the actual execution, so you might have to
+scroll up to find the different tables, but results are saved so you can also
+just run `make all` again. Alternatively, you can reproduce the experiment for
+each table individually by running e.g. `make table1` in the `benchmarks`
+directory:
+
+```
+cd benchmarks
+make table1
+```
+
+### Running benchmarks in a container
+
+For even greater reproducability, we supply Docker-containers which can be used
+to replicate the results from our article, as described below.
+
+For NVIDIA devices, additional steps are needed to ensure that Docker containers
+have access to the hosts GPU devices. Follow the instructions to
+[here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+to set up and install the NVIDIA Container Toolkit.
+
+We supply two containers: `futhark-mem-sc22:cuda` and `futhark-mem-sc22:rocm`,
+targeted at CUDA devices (such as NVIDIAs A100) and ROCM devices (such as AMDs
+MI100) respectively.
+
+The containers have been uploaded to the Github container
+registry, and can be executed as follows
+
+```
+# cuda
+docker run --rm -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda
+
+# rocm
+docker run --rm -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm
+```
+
+Running the commands above will pull and execute the container in question,
+running all benchmarks and showing the resulting tables, equivalent to running
+`make tables` in the `benchmarks` directory.
+
+If anything fails, or if you only want to run particular benchmarks one at a
+time, you can also get a command prompt inside the container by appending `-i
+bash` to the commands above. Run `make help` inside the container to get
+started.
+
+## Building the containers
+
+To re-build or verify the container builds, we use `nix`. Each container can be
+rebuilt using the following commands:
+
+```
+# cuda
+make cuda.tar.gz
+
+# rocm
+make rocm.tar.gz
+```
+
+After building each container, you can load it into your local Docker registry
+using:
+
+```
+# cuda
 docker load < cuda.tar.gz
-docker run --rm --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ localhost/futhark-mem-sc22:cuda
-```
 
-
-## Instructions for running ROCM container
-
-```
-nix-build rocm.nix -o rocm.tar.gz
+# rocm
 docker load < rocm.tar.gz
-docker run -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video localhost/futhark-mem-sc22:rocm
 ```
+
+Finally, you can run your locally built container using the commands from above,
+replacing the ghcr.io link with e.g. `localhost/futhark-mem-sc22:cuda`.
 
 ## Troubleshooting
 
 ### Podman fails with "Error: payload does not match any of the supported image formats (oci, oci-archive, dir, docker-archive)"
 
-This symptom can have multiple causes:
+Podman is a docker-equivalent, which mostly works as a 1:1 substitute, but which
+has some bad error messages. The symptom described above can have multiple causes:
 
 * Insufficient space on `/tmp`, which us used for storing the
   container.  Set the `TMPDIR` environment variable to point at a
   directory where you have write access and there is plenty of free
   space.
 
-* You may need to run the `docker` commands as root.
+* You may need to run the `podman` commands as root.
 
 ## Manifest
 
