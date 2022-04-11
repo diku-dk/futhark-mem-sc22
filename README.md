@@ -80,10 +80,20 @@ time, you can also get a command prompt inside the container by appending `-i
 bash` to the commands above. Run `make help` inside the container to get
 started.
 
-## Building the containers
+## Rebuilding containers and binaries
 
-To re-build or verify the container builds, we use `nix`. Each container can be
-rebuilt using the following commands:
+To re-build or verify the container builds or the `futhark` binary, we use
+[Nix](https://nixos.org/). To install Nix, follow the [installation instructions
+on the website](https://nixos.org/download.html).
+
+To build the `futhark` binary, simply execute the following command after
+installing Nix:
+
+```
+make bin/futhark
+```
+
+Each container can be rebuilt using the following commands:
 
 ```
 # cuda
