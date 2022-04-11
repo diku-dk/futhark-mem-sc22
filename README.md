@@ -76,9 +76,18 @@ running all benchmarks and showing the resulting tables, equivalent to running
 `make tables` in the `benchmarks` directory.
 
 If anything fails, or if you only want to run particular benchmarks one at a
-time, you can also get a command prompt inside the container by appending `-i
-bash` to the commands above. Run `make help` inside the container to get
-started.
+time, you can also get a command prompt inside the container by running the
+following command instead:
+
+```
+# cuda
+docker run --rm -i -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda bash
+
+# rocm
+docker run --rm -i -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm bash
+```
+
+Run `make help` inside the container to get started.
 
 ## Rebuilding containers and binaries
 
