@@ -24,7 +24,7 @@ jobs:
     - uses: cachix/cachix-action@v10
       with:
         name: futhark-mem-sc22
-        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
     - name: Build cuda.tar.gz
       run: make cuda.tar.gz
