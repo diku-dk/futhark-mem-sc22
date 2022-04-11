@@ -22,12 +22,12 @@ help:
 	@echo 'Inside the CUDA and ROCM containers, you have to specify e.g. `make FUTHARK=/futhark table1`.'
 
 tables: table1 table2 table3 table4 table5 table6
-	./result-table nw
-	./result-table lud
-	./result-table hotspot
-	./result-table lbm
-	./result-table OptionPricing
-	./result-table LocVolCalib
+	./result-table.py nw
+	./result-table.py lud
+	./result-table.py hotspot
+	./result-table.py lbm
+	./result-table.py OptionPricing
+	./result-table.py LocVolCalib
 
 table1:
 	make -C nw/futhark all
