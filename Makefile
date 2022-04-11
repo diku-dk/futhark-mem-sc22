@@ -10,7 +10,8 @@ help:
 	@echo '  `make cuda.tar.gz` - Build the docker container for CUDA (A100) execution.'
 	@echo '  `make rocm.tar.gz` - Build the docker container for ROCM (MI100) execution.'
 	@echo
-	@echo '  `make clean`       - Cleanup cached results'
+	@echo '  `make clean`       - Cleanup cached results.'
+	@echo '  `make help`        - Show help information.'
 
 .PHONY: tables
 tables:
