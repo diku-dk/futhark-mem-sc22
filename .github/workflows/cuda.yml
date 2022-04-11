@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-cuda.tar.gz:
+  build-cuda:
     runs-on: ubuntu-20.04
 
     steps:
