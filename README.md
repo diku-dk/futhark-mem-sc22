@@ -34,9 +34,19 @@ This symptom can have multiple causes:
 
 This section describes every top-level directory and its purpose.
 
-* `bin/`: precompiled binaries and scripts used in the artifact.
+* `bin/`: precompiled binaries used in the artifact.
 
 * `futhark/`: a Git submodule containing the Futhark compiler extended
   with memory optimisations.  This is the compiler used for the
   artifact, and can be used to (re)produce the `bin/futhark`
   executable with `make bin/futhark -B`.
+
+* `benchmarks/`: Futhark and reference implementations of the different
+  benchmarks used in the article. Contains a `Makefile` that allows you to run
+  each benchmark and `result-table.py` which is used to show the tables in
+  ASCII-form.
+
+* `nvidia-icd/`: Additional files needed to build the `cuda.tar.gz`
+  container. In particular, the `nvidia/cuda` Docker image supplied by NVIDIA
+  does not by default support OpenCL execution, so we have to patch in some
+  configuration-files.
