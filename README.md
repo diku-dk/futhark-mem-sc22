@@ -35,16 +35,16 @@ benchmarks using the Futhark binary in `bin` and show the resulting performance
 tables in ASCII. To use another version of Futhark, use `make FUTHARK=my-futhark
 all`.
 
-The tables are interleaved with the actual execution, so you might have to
-scroll up to find the different tables, but results are saved so you can also
-just run `make all` again. Alternatively, you can reproduce the experiment for
-each table individually by running e.g. `make table1` in the `benchmarks`
-directory:
+Alternatively, you can reproduce the experiment for each table individually by
+running e.g. `make table1` in the `benchmarks` directory:
 
 ```
 cd benchmarks
 make table1
 ```
+
+Benchmark results are cached, so running `make table1` a second time will be
+instantaneous. To cleanup cached results, use `make clean`.
 
 ### Running benchmarks in a container
 
