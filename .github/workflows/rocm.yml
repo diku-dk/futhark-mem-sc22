@@ -39,5 +39,5 @@ jobs:
     - name: Push docker image to Github Container Registry
       run: |
         docker load < rocm.tar.gz
-        docker push ghcr.io/diku-dk/futhark-mem-sc22:rocm
+        docker push futhark-mem-sc22:rocm
 
