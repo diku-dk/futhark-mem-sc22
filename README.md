@@ -117,6 +117,11 @@ docker load < rocm.tar.gz
 Finally, you can run your locally built container using the commands from above,
 replacing the ghcr.io link with e.g. `localhost/futhark-mem-sc22:cuda`.
 
+## Expected runtimes
+
+Running the entire benchmark suite takes around 40 minutes on the A100 and 90
+minutes on the MI100.
+
 ## Troubleshooting
 
 ### Podman fails with "Error: payload does not match any of the supported image formats (oci, oci-archive, dir, docker-archive)"
