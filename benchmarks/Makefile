@@ -1,5 +1,11 @@
 .PHONY: help all table1 table2 table3 table4 table5 table6
 all: table1 table2 table3 table4 table5 table6
+	./result-table nw
+	./result-table lud
+	./result-table hotspot
+	./result-table lbm
+	./result-table OptionPricing
+	./result-table LocVolCalib
 
 help:
 	@echo "futhark-mem-sc22 benchmarks"
