@@ -1,4 +1,4 @@
-# sc22-futhark-memory-artifact
+# futhark-mem-sc22
 
 ## Instructions for running CUDA container
 
