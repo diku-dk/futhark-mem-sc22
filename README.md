@@ -19,7 +19,8 @@ git submodule update
 ## Instructions for running experiments
 
 We support two different methods of running the experiments from the paper:
-Directly on your host-machine or inside one of the provided containers.
+Directly on your host-machine or inside one of the provided containers. We
+recommend using one of the provided containers.
 
 ### Running benchmarks on your host-machine
 
