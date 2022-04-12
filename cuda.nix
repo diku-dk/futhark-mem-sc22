@@ -41,6 +41,7 @@ pkgs.dockerTools.buildLayeredImage {
            "LIBRARY_PATH=/usr/local/cuda/lib64"
            "LD_LIBRARY_PATH=/usr/local/cuda/lib64"
            "CPLUS_INCLUDE_PATH=/usr/local/cuda/include"
+           "FUTHARK=/bin/futhark"
           ];
     Cmd = [ "${pkgs.gnumake}/bin/make" "tables"];
     WorkingDir = "${benchmarks}";
