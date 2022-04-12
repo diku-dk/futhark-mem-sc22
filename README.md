@@ -90,6 +90,8 @@ docker run --rm -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=un
 
 ## Rebuilding containers and binaries
 
+Note: These steps are not necessary to reproduce our results.
+
 To re-build or verify the container builds or the `futhark` binary, we use
 [Nix](https://nixos.org/). To install Nix, follow the [installation instructions
 on the website](https://nixos.org/download.html).
