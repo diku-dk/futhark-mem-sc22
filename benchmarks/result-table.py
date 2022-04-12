@@ -2,7 +2,7 @@
 #
 # Get benchmarks results from one benchmark
 #
-# USAGE: ./show-results results/a100/lud 32
+# USAGE: ./result-table.py lud
 
 import textwrap
 import json
