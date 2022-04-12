@@ -60,24 +60,8 @@ We supply two containers: `futhark-mem-sc22:cuda` and `futhark-mem-sc22:rocm`,
 targeted at CUDA devices (such as NVIDIAs A100) and ROCM devices (such as AMDs
 MI100) respectively.
 
-The containers have been uploaded to the Github container
-registry, and can be executed as follows
-
-```
-# cuda
-docker run --rm -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda
-
-# rocm
-docker run --rm -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm
-```
-
-Running the commands above will pull and execute the container in question,
-running all benchmarks and showing the resulting tables, equivalent to running
-`make tables` in the `benchmarks` directory.
-
-If anything fails, or if you only want to run particular benchmarks one at a
-time, you can also get a command prompt inside the container by running the
-following command instead:
+The containers have been uploaded to the Github container registry, so you don't
+need to clone this repository to use them. They can be executed as follows:
 
 ```
 # cuda
@@ -87,7 +71,21 @@ docker run --rm -i -t --security-opt=label=disable --hooks-dir=/usr/share/contai
 docker run --rm -i -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm bash
 ```
 
-Run `make help` inside the container to get started.
+Running the commands above will pull and execute the container in question,
+putting you in a command prompt in the `benchmarks` directory. There, you can
+run `make tables` to run all benchmarks or e.g. `make table1` to make table
+run. Use `make help` for additional information.
+
+Alternatively, you can automatically run and display all tables by executing one
+of the following commands:
+
+```
+# cuda
+docker run --rm -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda
+
+# rocm
+docker run --rm -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm
+```
 
 ## Rebuilding containers and binaries
 
