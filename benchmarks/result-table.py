@@ -7,9 +7,11 @@
 import textwrap
 import json
 import sys
-import numpy as np
 import re
 from collections import OrderedDict
+
+def mean(x):
+    return sum(x)/len(x)
 
 def canonical_name(name):
     try:
@@ -50,12 +52,12 @@ if __name__ == '__main__':
     for dataset, results in plain_json.items():
         pretty_name = canonical_name(dataset)
 
-        ref = np.mean(reference[dataset]["runtimes"])
+        ref = mean(reference[dataset]["runtimes"])
         print(' {name:<8} | {reference:>7d}ms | {plain_speedup:>13.2f}x | {optimized_speedup:>11.2f}x | {impact:>10.2f}x'
               .format(name = pretty_name,
                       reference = int(round(ref / 1000)),
-                      plain_speedup = ref / np.mean(results["runtimes"]),
-                      optimized_speedup = ref / np.mean(optimized_json[dataset]["runtimes"]),
-                      impact = np.mean(results["runtimes"]) / np.mean(optimized_json[dataset]["runtimes"])))
+                      plain_speedup = ref / mean(results["runtimes"]),
+                      optimized_speedup = ref / mean(optimized_json[dataset]["runtimes"]),
+                      impact = mean(results["runtimes"]) / mean(optimized_json[dataset]["runtimes"])))
 
     print("")
