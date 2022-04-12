@@ -204,7 +204,5 @@ Targets:
 
 For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.
 Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.
-
-Inside the CUDA and ROCM containers, you have to specify e.g. `make FUTHARK=/futhark table1`.
 ```
 

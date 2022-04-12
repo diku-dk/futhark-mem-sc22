@@ -18,8 +18,6 @@ help:
 	@echo
 	@echo 'For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.'
 	@echo 'Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.'
-	@echo
-	@echo 'Inside the CUDA and ROCM containers, you have to specify e.g. `make FUTHARK=/futhark table1`.'
 
 tables: table1 table2 table3 table4 table5 table6
 	./result-table.py nw

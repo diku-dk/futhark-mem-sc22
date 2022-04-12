@@ -3,9 +3,9 @@ let
   futhark0 = import ./futhark/default.nix {};
   futhark = futhark0.overrideAttrs (old: {
     installPhase = ''
-                  mkdir -p $out
+                  mkdir -p $out/bin
                   tar xf futhark-nightly.tar.xz
-                  cp futhark-nightly/bin/futhark $out
+                  cp futhark-nightly/bin/futhark $out/bin
                 '';
   });
   rocm = pkgs.dockerTools.pullImage {
@@ -40,7 +40,7 @@ pkgs.dockerTools.buildLayeredImage {
            "LD_LIBRARY_PATH=/opt/rocm/lib:/opt/rocm/opencl/lib"
            "CPLUS_INCLUDE_PATH=/opt/rocm/include:/opt/rocm/opencl/lib"
           ];
-    Cmd = [ "${pkgs.gnumake}/bin/make" "FUTHARK=/futhark" "tables"];
+    Cmd = [ "${pkgs.gnumake}/bin/make" "tables"];
     WorkingDir = "${benchmarks}";
   };
 }
