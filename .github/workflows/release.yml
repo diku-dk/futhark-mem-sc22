@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        tag: [cuda, rocm]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@v12
+
+    - uses: cachix/cachix-action@v10
+      with:
+        name: futhark-mem-sc22
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+
+    - name: Build ${{ matrix.tag }}.tar.gz
+      run: make ${{ matrix.tag }}.tar.gz
+
+    - name: Log in to the Container registry
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push docker image to Github Container Registry
+      run: |
+        docker load < ${{ matrix.tag }}.tar.gz
+        docker tag futhark-mem-sc22:${{ matrix.tag }} ghcr.io/diku-dk/futhark-mem-sc22:${{ matrix.tag }}
+        docker push ghcr.io/diku-dk/futhark-mem-sc22:${{ matrix.tag }}
+
+  release:
+    needs: build
+
+    steps:
+    - name: Prepare metadata
+      id: metadata
+      run: |
+        echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/v}
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ steps.metadata.outputs.VERSION }}
+        draft: false
+        prerelease: false
+
