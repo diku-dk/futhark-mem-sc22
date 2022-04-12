@@ -1,5 +1,7 @@
 # futhark-mem-sc22
 
+[![CI](https://github.com/diku-dk/futhark-mem-sc22/workflows/CI/badge.svg)](https://github.com/diku-dk/futhark-mem-sc22/actions/workflows/release.yml)[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6452039.svg)](https://doi.org/10.5281/zenodo.6452039)
+
 Welcome to `futhark-mem-sc22`. The purpose of this repository is to help
 reproduce the results of the "Memory Optimizations in an Array Language" paper
 submitted to SC22. This artifact reproduces tables I, II, III, IV, V, and VI.
