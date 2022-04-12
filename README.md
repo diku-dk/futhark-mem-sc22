@@ -131,6 +131,17 @@ minutes on the MI100.
 
 ## Troubleshooting
 
+### Running out of space in containers
+
+A common source of errors in our testing has been running out of space on our
+host devices (which has far too little space on the root partition). As
+described below, some space-requirements when loading containers can be
+alleviated by setting `TMPDIR`, but you might still run out of space when
+actually running the containers.
+
+We recommend having at least 30GB of free space on your root partition before
+attempting to run the containers.
+
 ### Podman fails with "Error: payload does not match any of the supported image formats (oci, oci-archive, dir, docker-archive)"
 
 Podman is a docker-equivalent, which mostly works as a 1:1 substitute, but which
