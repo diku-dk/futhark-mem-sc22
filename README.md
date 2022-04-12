@@ -77,8 +77,8 @@ docker run --rm -i -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp
 
 Running the commands above will pull and execute the container in question,
 putting you in a command prompt in the `benchmarks` directory. There, you can
-run `make tables` to run all benchmarks or e.g. `make table1` to make table
-run. Use `make help` for additional information.
+run `make tables` to run all benchmarks or e.g. `make table1` to reproduce
+individual tables. Use `make help` for additional information.
 
 Alternatively, you can automatically run and display all tables by executing one
 of the following commands:
