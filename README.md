@@ -57,9 +57,10 @@ have access to the hosts GPU devices. Follow the instructions to
 [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 to set up and install the NVIDIA Container Toolkit.
 
-We supply two containers: `futhark-mem-sc22:cuda` and `futhark-mem-sc22:rocm`,
-targeted at CUDA devices (such as NVIDIAs A100) and ROCM devices (such as AMDs
-MI100) respectively.
+We supply two containers:
+
+ - `futhark-mem-sc22:cuda` - targeted at CUDA devices (such as NVIDIAs A100)
+ - `futhark-mem-sc22:rocm` - targeted at ROCM devices (such as AMDs MI100)
 
 The containers have been uploaded to the Github container registry, so you don't
 need to clone this repository to use them. They can be executed as follows:
