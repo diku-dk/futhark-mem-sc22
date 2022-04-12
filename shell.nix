@@ -9,7 +9,7 @@ pkgs.stdenvNoCC.mkDerivation {
   name = "futhark-mem-sc22";
   nativeBuildInputs = [
      pkgs.python2
-     (pkgs.python39.withPackages python-packages)
+     (pkgs.python3.withPackages python-packages)
      pkgs.moreutils
      pkgs.jq
      pkgs.gnumake

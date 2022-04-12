@@ -1,14 +1,12 @@
-#!/usr/bin/env python3.9
+#!/usr/bin/env python3
 #
 # Get benchmarks results from one benchmark
 #
 # USAGE: ./result-table.py lud
 
-import textwrap
 import json
 import sys
 import re
-from collections import OrderedDict
 
 def mean(x):
     return sum(x)/len(x)
