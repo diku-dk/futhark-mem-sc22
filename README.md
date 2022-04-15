@@ -69,10 +69,20 @@ need to clone this repository to use them. They can be executed as follows:
 
 ```
 # cuda
-docker run --rm -i -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda bash
+docker run --rm -i -t --gpus all ghcr.io/diku-dk/futhark-mem-sc22:cuda bash
 
 # rocm
 docker run --rm -i -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm bash
+```
+
+Alternatively, you can use podman, in which case the commands are:
+
+```
+# cuda
+podman run --rm -i -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda bash
+
+# rocm
+podman run --rm -i -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm bash
 ```
 
 Running the commands above will pull and execute the container in question,
@@ -85,7 +95,7 @@ of the following commands:
 
 ```
 # cuda
-docker run --rm -t --security-opt=label=disable --hooks-dir=/usr/share/containers/oci/hooks.d/ ghcr.io/diku-dk/futhark-mem-sc22:cuda
+docker run --rm -t --gpus all ghcr.io/diku-dk/futhark-mem-sc22:cuda
 
 # rocm
 docker run --rm -t --device=/dev/kfd --device=/dev/dri --security-opt seccomp=unconfined --group-add video ghcr.io/diku-dk/futhark-mem-sc22:rocm
