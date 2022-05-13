@@ -6,7 +6,7 @@ CC_FLAGS = -g -O3
 
 EXE = nn
 
-RUNS ?= 10
+RUNS ?= 100
 
 results.json: nn
 	RODINIA_RUNS=$(RUNS) RODINIA_REPEAT_DATA=20 ./nn filelist.txt -r 100 -lat 30 -lng 90 -p 0 -d 0 \
