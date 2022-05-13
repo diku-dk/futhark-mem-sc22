@@ -19,6 +19,12 @@ results.json: nn
 	  | sponge $@
 
 
+	RODINIA_RUNS=$(RUNS) RODINIA_REPEAT_DATA=2000 ./nn filelist.txt -r 100 -lat 30 -lng 90 -p 0 -d 0 \
+	  | jq -nR '{"100i64 30.0f32 90.0f32 [85528000]f32 [85528000]f32": { "runtimes": [inputs | select(length>0) | tonumber]}}' \
+	  | jq -s '.[0] + .[1]' - $@ \
+	  | sponge $@
+
+
 nn: $(SRC)
 	$(CC) $(CC_FLAGS) -lOpenCL  -fopenmp $(SRC) -o $(EXE)
 
