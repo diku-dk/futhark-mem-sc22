@@ -223,6 +223,7 @@ Targets:
   `make table4` - Compile and run LBM benchmarks
   `make table5` - Compile and run OptionPricing benchmarks
   `make table6` - Compile and run LocVolCalib benchmarks
+  `make table7` - Compile and run NN benchmarks
 
   `make clean`  - Cleanup all cached results
   `make help`   - Show help information.
