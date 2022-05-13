@@ -12,6 +12,7 @@ help:
 	@echo '  `make table4` - Compile and run LBM benchmarks'
 	@echo '  `make table5` - Compile and run OptionPricing benchmarks'
 	@echo '  `make table6` - Compile and run LocVolCalib benchmarks'
+	@echo '  `make table7` - Compile and run NN benchmarks'
 	@echo
 	@echo '  `make clean`  - Cleanup all cached results'
 	@echo '  `make help`   - Show help information.'
@@ -19,13 +20,14 @@ help:
 	@echo 'For all targets, you can specify a different version of `futhark` by setting `FUTHARK=my-futhark`.'
 	@echo 'Similarly, you can specify how many executions of each benchmark you want to use with e.g. `RUNS=10`.'
 
-tables: table1 table2 table3 table4 table5 table6
+tables: table1 table2 table3 table4 table5 table6 table7
 	./result-table.py nw
 	./result-table.py lud
 	./result-table.py hotspot
 	./result-table.py lbm
 	./result-table.py OptionPricing
 	./result-table.py LocVolCalib
+	./result-table.py nn
 
 table1:
 	make -C nw/futhark all
@@ -57,6 +59,11 @@ table6:
 	make -C LocVolCalib/reference results.json
 	./result-table.py LocVolCalib
 
+table7:
+	make -C nn/futhark all
+	make -C nn/reference results.json
+	./result-table.py nn
+
 .PHONY: clean
 clean:
 	make -C nw/futhark clean
@@ -76,3 +83,6 @@ clean:
 
 	make -C LocVolCalib/futhark clean
 	make -C LocVolCalib/reference clean
+
+	make -C nn/futhark clean
+	make -C nn/reference clean
