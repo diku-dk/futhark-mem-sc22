@@ -4,7 +4,8 @@
 
 Welcome to `futhark-mem-sc22`. The purpose of this repository is to help
 reproduce the results of the "Memory Optimizations in an Array Language" paper
-submitted to SC22. This artifact reproduces tables I, II, III, IV, V, and VI.
+submitted to SC22. This artifact reproduces tables I, II, III, IV, V, VI and
+VII.
 
 ## Initial setup
 
